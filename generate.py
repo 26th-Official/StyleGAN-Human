@@ -104,9 +104,10 @@ def generate_images(
                 target_w= w.cpu()
             else:
                 target_w=np.append(target_w, w.cpu(), axis=0) 
-
+            print(np.array(img).shape)
             img = (img.permute(0, 2, 3, 1) * 127.5 + 128).clamp(0, 255).to(torch.uint8)
-            PIL.Image.fromarray(img[0].cpu().numpy(), 'RGBA').save(f'{outdir}/seed{seed:04d}.png')
+            print(np.array(img).shape)
+            PIL.Image.fromarray(img[0].cpu().numpy(), 'RGB').save(f'{outdir}/seed{seed:04d}.png')
     # print(target_z)
     # print(target_z.shape,target_w.shape)
 
